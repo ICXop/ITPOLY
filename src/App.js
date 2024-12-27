@@ -1,23 +1,28 @@
-import React from 'react';
-import Header from './component/Header';
-import Footer from './component/Footer';
-import Navbar from './component/Navbar';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./component/Header";
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Courses from "./pages/Courses";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
-    <div className="app">
+    <Router>
+      <Header />
       <Navbar />
-
-      <Header />  {/* Render the Header component */}
-      
-      <main className="main-content">
-        <h2>Welcome to My Website</h2>
-        <p>This is a simple React application with a header and footer.</p>
-        <p>You can add more content here.</p>
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
-      
-      <Footer />  {/* Render the Footer component */}
-    </div>
+      <Footer />
+    </Router>
   );
 };
 
